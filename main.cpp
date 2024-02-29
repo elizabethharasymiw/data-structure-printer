@@ -1,29 +1,6 @@
 #include <iostream>
 
-//#include "tree.hpp"
-
-struct TreeNode {
-	int val;
-	TreeNode *left;
-	TreeNode *right;
-	TreeNode() : val(0), left(nullptr), right(nullptr) {}
-	TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
-	TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
-};
-
-void printDFTPath(TreeNode* root){
-	if(root == NULL) return;   // Exit recursion
-	std::cout << root->val << std::endl; // Print what we are looking at
-	printDFTPath(root->left);  // Try to go Left
-	printDFTPath(root->right); // Try to go Right
-}
-
-void printInOrderPath(TreeNode* root){
-	if(root == NULL) return;       // Exit recursion
-	printInOrderPath(root->left);  // Try to go Left
-	std::cout << root->val << std::endl;     // Print what we are looking at
-	printInOrderPath(root->right); // Try to go Right
-}
+#include "tree.hpp"
 
 int main(int argc, char *argv[]) {
 
