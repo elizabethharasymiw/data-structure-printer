@@ -15,4 +15,7 @@ struct ListNode {
 // Function to reverse a LinkedList ordering 
 ListNode* reverseList(ListNode* head);
 
+// Function to print a LinkedList in human readable way
+void printLinkedList(ListNode* head);
+
 #endif // LIST_HEADER_FILE_H

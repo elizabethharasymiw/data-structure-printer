@@ -2,6 +2,14 @@
 
 #include <iostream>
 
+void printLinkedList(ListNode* head){
+	while(head != nullptr){
+		std::cout << "(" << head->val << ")" << "->";
+		head = head->next;
+	}
+	std::cout << "nullptr" << std::endl;
+}
+
 ListNode* reverseList(ListNode* head) {
 
 	ListNode* current = head;
