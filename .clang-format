@@ -1,0 +1,6 @@
+# To manually run and  reformat a file:
+# clang-format -i --style=file <file>
+Language:      Cpp
+BasedOnStyle:  LLVM
+IndentWidth:   4
+UseTab:        Never
