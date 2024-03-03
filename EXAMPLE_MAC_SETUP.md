@@ -26,8 +26,8 @@ brew install clang-format
 ## Building
 ```
 
-# Compile program using llvm compiler
-clang++ -std=c++11 -o my_program main.cpp tree.cpp list.cpp
+# Command to build using the Makefile
+make
 
 ```
 
