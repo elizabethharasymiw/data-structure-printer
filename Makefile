@@ -9,3 +9,6 @@ tree.o: tree.cpp tree.hpp
 
 list.o: list.cpp list.hpp
 	clang++ -c list.cpp
+
+clean:
+	rm *.o my_program
