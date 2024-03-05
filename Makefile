@@ -1,16 +1,17 @@
 CXX := clang++
+CXXFLAGS := -Wall -Werror -std=c++11
 
 my_program: main.o tree.o list.o
-	$(CXX) main.o tree.o list.o -o my_program
+	$(CXX) $(CXXFLAGS) main.o tree.o list.o -o my_program
 
 main.o: main.cpp
-	$(CXX) -c main.cpp
+	$(CXX) $(CXXFLAGS) -c main.cpp
 
 tree.o: tree.cpp tree.hpp
-	$(CXX) -c tree.cpp
+	$(CXX) $(CXXFLAGS) -c tree.cpp
 
 list.o: list.cpp list.hpp
-	$(CXX) -c list.cpp
+	$(CXX) $(CXXFLAGS) -c list.cpp
 
 clean:
 	rm *.o my_program
