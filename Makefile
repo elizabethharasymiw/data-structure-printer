@@ -1,5 +1,5 @@
 CXX := clang++
-CXXFLAGS := -Wall -Werror -std=c++11
+CXXFLAGS := -Wall -Werror -std=c++14
 
 my_program: main.o tree.o list.o
 	$(CXX) $(CXXFLAGS) main.o tree.o list.o -o my_program
