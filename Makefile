@@ -1,13 +1,13 @@
 CXX := clang++
 CXXFLAGS := -Wall -Werror -std=c++14
 
-phony_target: my_program my_tests
+phony_target: my_program tests
 
 my_program: main.o tree.o list.o
 	$(CXX) $(CXXFLAGS) main.o tree.o list.o -o my_program
 
-my_tests: list_test.o catch_amalgamated.o list.o
-	$(CXX) $(CXXFLAGS) list_test.o catch_amalgamated.o list.o -o my_tests
+tests: list_test.o catch_amalgamated.o list.o
+	$(CXX) $(CXXFLAGS) list_test.o catch_amalgamated.o list.o -o tests
 
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
@@ -22,4 +22,4 @@ list.o: list.cpp list.hpp
 	$(CXX) $(CXXFLAGS) -c list.cpp
 
 clean:
-	rm *.o my_program my_tests
+	rm *.o my_program tests
