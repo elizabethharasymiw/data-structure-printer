@@ -3,34 +3,17 @@
 #include <iostream>
 #include <sstream>
 
+#include "test_support.hpp"
 #include "catch_amalgamated.hpp"
 #include "list.hpp"
 
 
-void foo(){
+// Testing function that just prints "foo" and a newline to the stdout
+void printFoo(){
     std::cout << "foo" << std::endl;
 }
 
-class AutoRestoreRdbuf {
-    std::ostream& out;
-    std::streambuf* old;
-
-    public:
-        ~AutoRestoreRdbuf(){ out.rdbuf(old); }
-        AutoRestoreRdbuf(const AutoRestoreRdbuf&) = delete;
-        AutoRestoreRdbuf(AutoRestoreRdbuf&&) = delete;
-        AutoRestoreRdbuf(std::ostream& out) : out { out }, old { out.rdbuf() } {}
-};
-
-std::string stringWrittentToStream(std::function<void()> myFunction, std::ostream& out = std::cout){
-    AutoRestoreRdbuf restore { out };
-    std::ostringstream oss;
-    std::cout.rdbuf(oss.rdbuf());
-    myFunction();
-    return oss.str();
-}
-
-TEST_CASE("0: Foo", "testtest"){
-    auto s = stringWrittentToStream(&foo);
+TEST_CASE("0: Print foo", "testtest"){
+    auto s = stringWrittentToStream(&printFoo, std::cout);
     REQUIRE(s == "foo\n");
 }

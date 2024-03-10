@@ -6,8 +6,11 @@ phony_target: my_program tests
 my_program: main.o tree.o list.o
 	$(CXX) $(CXXFLAGS) main.o tree.o list.o -o my_program
 
-tests: list_test.o catch_amalgamated.o list.o
-	$(CXX) $(CXXFLAGS) list_test.o catch_amalgamated.o list.o -o tests
+tests: list_test.o catch_amalgamated.o list.o test_support.o
+	$(CXX) $(CXXFLAGS) list_test.o catch_amalgamated.o list.o test_support.o -o tests
+
+test_support.o: test_support.cpp test_support.hpp
+	$(CXX) $(CXXFLAGS) -c test_support.cpp
 
 main.o: main.cpp
 	$(CXX) $(CXXFLAGS) -c main.cpp
