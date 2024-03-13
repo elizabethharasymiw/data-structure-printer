@@ -3,17 +3,14 @@
 #include <iostream>
 #include <sstream>
 
-#include "test_support.hpp"
 #include "catch_amalgamated.hpp"
 #include "list.hpp"
-
+#include "test_support.hpp"
 
 // Testing function that just prints "foo" and a newline to the stdout
-void printFoo(){
-    std::cout << "foo" << std::endl;
-}
+void printFoo() { std::cout << "foo" << std::endl; }
 
-TEST_CASE("0: Print foo", "testtest"){
+TEST_CASE("0: Print foo", "testtest") {
     auto s = stringWrittentToStream(&printFoo, std::cout);
     REQUIRE(s == "foo\n");
 }
