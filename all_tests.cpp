@@ -35,4 +35,11 @@ TEST_CASE("2: Linked List Print Tests", "[list]") {
         auto s = stringWrittentToStream(func, std::cout);
         REQUIRE(s == "(1)->(2)->(3)->nullptr\n");
     }
+
+    SECTION("B: Print Reversed Linked List") {
+        ListNode *revList = reverseList(&myListNode1);
+        std::function<void()> func = std::bind(printLinkedList, revList);
+        auto s = stringWrittentToStream(func, std::cout);
+        REQUIRE(s == "(3)->(2)->(1)->nullptr\n");
+    }
 }
