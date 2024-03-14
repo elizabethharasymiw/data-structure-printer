@@ -1,5 +1,6 @@
 #define CATCH_CONFIG_MAIN
 
+#include <functional>
 #include <iostream>
 #include <sstream>
 
@@ -18,4 +19,20 @@ TEST_CASE("0: Print foo", "testtest") {
 TEST_CASE("1: List Node Value Test", "[list]") {
     ListNode myListNode1(1);
     REQUIRE(myListNode1.val == 1);
+}
+
+TEST_CASE("2: Linked List Print Tests", "[list]") {
+
+    // Manuel build example Linked List for testing
+    ListNode myListNode1(1);
+    ListNode myListNode2(2);
+    ListNode myListNode3(3);
+    myListNode1.next = &myListNode2;
+    myListNode2.next = &myListNode3;
+
+    SECTION("A: Print Linked List") {
+        std::function<void()> func = std::bind(printLinkedList, &myListNode1);
+        auto s = stringWrittentToStream(func, std::cout);
+        REQUIRE(s == "(1)->(2)->(3)->nullptr\n");
+    }
 }
