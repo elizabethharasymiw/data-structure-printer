@@ -14,3 +14,8 @@ TEST_CASE("0: Print foo", "testtest") {
     auto s = stringWrittentToStream(&printFoo, std::cout);
     REQUIRE(s == "foo\n");
 }
+
+TEST_CASE("1: List Node Value Test", "[list]") {
+    ListNode myListNode1(1);
+    REQUIRE(myListNode1.val == 1);
+}
