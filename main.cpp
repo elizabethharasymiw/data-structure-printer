@@ -27,19 +27,5 @@ int main(int argc, char *argv[]) {
     std::cout << "printing in order traversal of Tree Example" << std::endl;
     printInOrderPath(&myTreeRoot);
 
-    // Manuel build example Linked List for testing
-    ListNode myListNode1(1);
-    ListNode myListNode2(2);
-    ListNode myListNode3(3);
-    myListNode1.next = &myListNode2;
-    myListNode2.next = &myListNode3;
-
-    // Print, Reverse List, Print again
-    std::cout << "printing Linked List Example" << std::endl;
-    printLinkedList(&myListNode1);
-    ListNode *revList = reverseList(&myListNode1);
-    std::cout << "printing Reversed Linked List Example" << std::endl;
-    printLinkedList(revList);
-
     return 0;
 }
