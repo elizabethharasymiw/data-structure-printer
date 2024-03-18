@@ -1,9 +1,16 @@
-#ifndef LIST_HEADER_FILE_H
-#define LIST_HEADER_FILE_H
+/**
+ * @file list.hpp
+ * @brief Implementations of classes, structs, and functions for linked lists
+ */
+
+#ifndef LIST_HEADER_FILE_HPP
+#define LIST_HEADER_FILE_HPP
 
 #include <iostream>
 
-// LeetCode Definition for singly-linked list
+/**
+ * @brief LeetCode C++ implementation of a singly-linked list node
+ */
 struct ListNode {
     int val;
     ListNode *next;
@@ -12,10 +19,7 @@ struct ListNode {
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 };
 
-// Function to reverse a LinkedList ordering
+void printLinkedList(ListNode *head);
 ListNode *reverseList(ListNode *head);
 
-// Function to print a LinkedList in human readable way
-void printLinkedList(ListNode *head);
-
-#endif // LIST_HEADER_FILE_H
+#endif // LIST_HEADER_FILE_HPP
