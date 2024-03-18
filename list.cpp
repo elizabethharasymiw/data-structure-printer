@@ -38,6 +38,5 @@ ListNode *reverseList(ListNode *head) {
         current = forward;        // Move current up one
     }
 
-    head = backward;
-    return head;
+    return backward;              // return new front of linked list
 }
