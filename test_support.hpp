@@ -1,5 +1,5 @@
-#ifndef TEST_SUPPORT_HEADER_FILE_H
-#define TEST_SUPPORT_HEADER_FILE_H
+#ifndef TEST_SUPPORT_HEADER_FILE_HPP
+#define TEST_SUPPORT_HEADER_FILE_HPP
 
 #include <iostream>
 #include <sstream>
@@ -18,4 +18,4 @@ class AutoRestoreRdbuf {
 std::string stringWrittentToStream(std::function<void()> myFunction,
                                    std::ostream &myOut);
 
-#endif // TEST_SUPPORT_HEADER_FILE_H
+#endif // TEST_SUPPORT_HEADER_FILE_HPP

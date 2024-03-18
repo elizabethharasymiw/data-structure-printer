@@ -1,5 +1,5 @@
-#ifndef TREE_HEADER_FILE_H
-#define TREE_HEADER_FILE_H
+#ifndef TREE_HEADER_FILE_HPP
+#define TREE_HEADER_FILE_HPP
 
 #include <iostream>
 
@@ -20,4 +20,4 @@ void printDFTPath(TreeNode *root);
 // Print out the values of the given tree following a Breath-First Traversal
 void printInOrderPath(TreeNode *root);
 
-#endif // TREE_HEADER_FILE_H
+#endif // TREE_HEADER_FILE_HPP
