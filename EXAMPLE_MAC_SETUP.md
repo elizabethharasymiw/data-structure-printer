@@ -26,7 +26,7 @@ brew install clang-format
 ## Building
 ```
 
-# Command to build using the Makefile
+# Command to build the program and tests using the Makefile
 make
 
 ```
@@ -34,4 +34,9 @@ make
 ## Running
 ```
 ./my_program
+```
+
+## Run Unit Tests
+```
+./tests
 ```
