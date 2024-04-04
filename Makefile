@@ -1,28 +1,30 @@
-CXX := clang++
-CXXFLAGS := -Wall -Werror -std=c++14
+CXX         := clang++
+CXXFLAGS    := -Wall -Werror -std=c++14 -I include
+SRC_DIR     := src
+INCLUDE_DIR := include
 
 phony_target: my_program tests
 
-my_program: main.o tree.o list.o
-	$(CXX) $(CXXFLAGS) main.o tree.o list.o -o my_program
+my_program: $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o
+	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o -o my_program
 
-tests: all_tests.o catch_amalgamated.o list.o tree.o test_support.o
-	$(CXX) $(CXXFLAGS) all_tests.o catch_amalgamated.o list.o tree.o test_support.o -o tests
+tests: $(SRC_DIR)/all_tests.o $(SRC_DIR)/catch_amalgamated.o $(SRC_DIR)/list.o $(SRC_DIR)/tree.o $(SRC_DIR)/test_support.o
+	$(CXX) $(CXXFLAGS) $(SRC_DIR)/all_tests.o $(SRC_DIR)/catch_amalgamated.o $(SRC_DIR)/list.o $(SRC_DIR)/tree.o $(SRC_DIR)/test_support.o -o tests
 
-test_support.o: test_support.cpp test_support.hpp
-	$(CXX) $(CXXFLAGS) -c test_support.cpp
+test_support.o: $(SRC_DIR)/test_support.cpp $(INCLUDE_DIR)/test_support.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/test_support.cpp
 
-main.o: main.cpp
-	$(CXX) $(CXXFLAGS) -c main.cpp
+main.o: $(SRC_DIR)/main.cpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/main.cpp
 
-catch_amalgamated.o: catch_amalgamated.cpp catch_amalgamated.hpp
-	$(CXX) $(CXXFLAGS) -c catch_amalgamated.cpp
+catch_amalgamated.o: $(SRC_DIR)/catch_amalgamated.cpp $(INCLUDE_DIR)/catch_amalgamated.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/catch_amalgamated.cpp
 
-tree.o: tree.cpp tree.hpp
-	$(CXX) $(CXXFLAGS) -c tree.cpp
+tree.o: $(SRC_DIR)/tree.cpp $(INCLUDE_DIR)/tree.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/tree.cpp
 
-list.o: list.cpp list.hpp
-	$(CXX) $(CXXFLAGS) -c list.cpp
+list.o: $(SRC_DIR)/list.cpp $(INCLUDE_DIR)/list.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/list.cpp
 
 clean:
-	rm *.o my_program tests
+	rm $(SRC_DIR)/*.o my_program tests
