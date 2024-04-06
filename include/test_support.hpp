@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <sstream>
+#include <functional>
 
 class AutoRestoreRdbuf {
     std::ostream &out;
