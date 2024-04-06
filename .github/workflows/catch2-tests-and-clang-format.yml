@@ -14,12 +14,12 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install clang-format
-    - run: sudo apt-get install clang-format
+      run: sudo apt-get install clang-format
     - name: Check all hpp file formatting
-    - run: clang-format --dry-run -style=file ./include/*.hpp
+      run: clang-format --dry-run -style=file ./include/*.hpp
     - name: Check all cpp file formatting
-    - run: clang-format --dry-run -style=file ./src/*.cpp
+      run: clang-format --dry-run -style=file ./src/*.cpp
     - name: Build Project and Tests
-    - run: make
+      run: make
     - name: Run Tests
-    - run: ./tests
+      run: ./tests
