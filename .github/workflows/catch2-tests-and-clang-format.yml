@@ -24,7 +24,7 @@ jobs:
     - run: clang-format --dry-run -style=file ./src/*.cpp
 
     - name: Build Project and Tests
-      run: make
+    - run: make
 
     - name: Run Tests
-      run: ./tests
+    - run: ./tests
