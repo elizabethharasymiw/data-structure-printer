@@ -75,7 +75,3 @@ TEST_CASE("3: Tree Print Tests", "[tree]") {
         REQUIRE(s == "1\n2\n3\n4\n5\n");
     }
 }
-
-TEST_CASE("4: Test Fail") {
-    REQUIRE(false);
-}
