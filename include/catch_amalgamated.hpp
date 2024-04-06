@@ -195,9 +195,10 @@
 //
 // Therefore, `CATCH_INTERNAL_IGNORE_BUT_WARN` is not implemented.
 #if !defined(__ibmxl__) && !defined(__CUDACC__) && !defined(__NVCOMPILER)
-#define CATCH_INTERNAL_IGNORE_BUT_WARN(...)                                              \
-    (void)__builtin_constant_p(__VA_ARGS__) /* NOLINT(cppcoreguidelines-pro-type-vararg, \
-                                               hicpp-vararg) */
+#define CATCH_INTERNAL_IGNORE_BUT_WARN(...)                                    \
+    (void)__builtin_constant_p(                                                \
+        __VA_ARGS__) /* NOLINT(cppcoreguidelines-pro-type-vararg,              \
+                        hicpp-vararg) */
 #endif
 
 #define CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS                               \
@@ -6859,46 +6860,48 @@ static int catchInternalSectionHint = 0;
 #endif
 
 ///////////////////////////////////////////////////////////////////////////////
-#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_2(TestName, TestFunc, Name, Tags,                                                                                       \
-                                            Signature, ...)                                                                                                       \
-    CATCH_INTERNAL_START_WARNINGS_SUPPRESSION                                                                                                                     \
-    CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS                                                                                                                      \
-    CATCH_INTERNAL_SUPPRESS_ZERO_VARIADIC_WARNINGS                                                                                                                \
-    CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS                                                                                                              \
-    CATCH_INTERNAL_SUPPRESS_UNUSED_VARIABLE_WARNINGS                                                                                                              \
-    CATCH_INTERNAL_SUPPRESS_COMMA_WARNINGS                                                                                                                        \
-    INTERNAL_CATCH_DECLARE_SIG_TEST(TestFunc,                                                                                                                     \
-                                    INTERNAL_CATCH_REMOVE_PARENS(Signature));                                                                                     \
-    namespace {                                                                                                                                                   \
-    namespace INTERNAL_CATCH_MAKE_NAMESPACE(TestName) {                                                                                                           \
-    INTERNAL_CATCH_TYPE_GEN                                                                                                                                       \
-    INTERNAL_CATCH_NTTP_GEN(INTERNAL_CATCH_REMOVE_PARENS(Signature))                                                                                              \
-    INTERNAL_CATCH_NTTP_REG_GEN(TestFunc,                                                                                                                         \
-                                INTERNAL_CATCH_REMOVE_PARENS(Signature))                                                                                          \
-    template <typename... Types> struct TestName {                                                                                                                \
-        TestName() {                                                                                                                                              \
-            size_t index = 0;                                                                                                                                     \
-            constexpr char const *tmpl_types[] = {CATCH_REC_LIST(                                                                                                 \
-                INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS, __VA_ARGS__)}; /* NOLINT(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays,hicpp-avoid-c-arrays) \
-                                                                         */                                                                                       \
-            using expander = size_t[]; /* NOLINT(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays,hicpp-avoid-c-arrays)                                  \
-                                        */                                                                                                                        \
-            (void)expander{                                                                                                                                       \
-                (reg_test(                                                                                                                                        \
-                     Types{},                                                                                                                                     \
-                     Catch::NameAndTags{                                                                                                                          \
-                         Name " - " + std::string(tmpl_types[index]), Tags}),                                                                                     \
-                 index++)...}; /* NOLINT */                                                                                                                       \
-        }                                                                                                                                                         \
-    };                                                                                                                                                            \
-    static const int INTERNAL_CATCH_UNIQUE_NAME(globalRegistrar) = []() {                                                                                         \
-        TestName<INTERNAL_CATCH_MAKE_TYPE_LISTS_FROM_TYPES(__VA_ARGS__)>();                                                                                       \
-        return 0;                                                                                                                                                 \
-    }();                                                                                                                                                          \
-    }                                                                                                                                                             \
-    }                                                                                                                                                             \
-    CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION                                                                                                                      \
-    INTERNAL_CATCH_DEFINE_SIG_TEST(TestFunc,                                                                                                                      \
+#define INTERNAL_CATCH_TEMPLATE_TEST_CASE_2(TestName, TestFunc, Name, Tags,                                              \
+                                            Signature, ...)                                                              \
+    CATCH_INTERNAL_START_WARNINGS_SUPPRESSION                                                                            \
+    CATCH_INTERNAL_SUPPRESS_GLOBALS_WARNINGS                                                                             \
+    CATCH_INTERNAL_SUPPRESS_ZERO_VARIADIC_WARNINGS                                                                       \
+    CATCH_INTERNAL_SUPPRESS_UNUSED_TEMPLATE_WARNINGS                                                                     \
+    CATCH_INTERNAL_SUPPRESS_UNUSED_VARIABLE_WARNINGS                                                                     \
+    CATCH_INTERNAL_SUPPRESS_COMMA_WARNINGS                                                                               \
+    INTERNAL_CATCH_DECLARE_SIG_TEST(TestFunc,                                                                            \
+                                    INTERNAL_CATCH_REMOVE_PARENS(Signature));                                            \
+    namespace {                                                                                                          \
+    namespace INTERNAL_CATCH_MAKE_NAMESPACE(TestName) {                                                                  \
+    INTERNAL_CATCH_TYPE_GEN                                                                                              \
+    INTERNAL_CATCH_NTTP_GEN(INTERNAL_CATCH_REMOVE_PARENS(Signature))                                                     \
+    INTERNAL_CATCH_NTTP_REG_GEN(TestFunc,                                                                                \
+                                INTERNAL_CATCH_REMOVE_PARENS(Signature))                                                 \
+    template <typename... Types> struct TestName {                                                                       \
+        TestName() {                                                                                                     \
+            size_t index = 0;                                                                                            \
+            constexpr char const *tmpl_types[] = {CATCH_REC_LIST(                                                        \
+                INTERNAL_CATCH_STRINGIZE_WITHOUT_PARENS,                                                                 \
+                __VA_ARGS__)}; /* NOLINT(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays,hicpp-avoid-c-arrays) \
+                                */                                                                                       \
+            using expander = size_t                                                                                      \
+                []; /* NOLINT(cppcoreguidelines-avoid-c-arrays,modernize-avoid-c-arrays,hicpp-avoid-c-arrays)            \
+                     */                                                                                                  \
+            (void)expander{                                                                                              \
+                (reg_test(                                                                                               \
+                     Types{},                                                                                            \
+                     Catch::NameAndTags{                                                                                 \
+                         Name " - " + std::string(tmpl_types[index]), Tags}),                                            \
+                 index++)...}; /* NOLINT */                                                                              \
+        }                                                                                                                \
+    };                                                                                                                   \
+    static const int INTERNAL_CATCH_UNIQUE_NAME(globalRegistrar) = []() {                                                \
+        TestName<INTERNAL_CATCH_MAKE_TYPE_LISTS_FROM_TYPES(__VA_ARGS__)>();                                              \
+        return 0;                                                                                                        \
+    }();                                                                                                                 \
+    }                                                                                                                    \
+    }                                                                                                                    \
+    CATCH_INTERNAL_STOP_WARNINGS_SUPPRESSION                                                                             \
+    INTERNAL_CATCH_DEFINE_SIG_TEST(TestFunc,                                                                             \
                                    INTERNAL_CATCH_REMOVE_PARENS(Signature))
 
 #ifndef CATCH_CONFIG_TRADITIONAL_MSVC_PREPROCESSOR
@@ -11650,30 +11653,31 @@ auto makeMatchExpr(ArgT &&arg, MatcherT const &matcher)
     } while (false)
 
 ///////////////////////////////////////////////////////////////////////////////
-#define INTERNAL_CATCH_THROWS_MATCHES(macroName, exceptionType,                                            \
-                                      resultDisposition, matcher, ...)                                     \
-    do {                                                                                                   \
-        Catch::                                                                                            \
-            AssertionHandler                                                                               \
-                catchAssertionHandler(macroName##_catch_sr,                                                \
-                                      CATCH_INTERNAL_LINEINFO,                                             \
-                                      CATCH_INTERNAL_STRINGIFY(__VA_ARGS__) ", " CATCH_INTERNAL_STRINGIFY( \
-                                          exceptionType) ","                                               \
-                                                         " " CATCH_INTERNAL_STRINGIFY(matcher),            \
-                                      resultDisposition);                                                  \
-        if (catchAssertionHandler.allowThrows())                                                           \
-            try {                                                                                          \
-                static_cast<void>(__VA_ARGS__);                                                            \
-                catchAssertionHandler.handleUnexpectedExceptionNotThrown();                                \
-            } catch (exceptionType const &ex) {                                                            \
-                catchAssertionHandler.handleExpr(                                                          \
-                    Catch::makeMatchExpr(ex, matcher));                                                    \
-            } catch (...) {                                                                                \
-                catchAssertionHandler.handleUnexpectedInflightException();                                 \
-            }                                                                                              \
-        else                                                                                               \
-            catchAssertionHandler.handleThrowingCallSkipped();                                             \
-        INTERNAL_CATCH_REACT(catchAssertionHandler)                                                        \
+#define INTERNAL_CATCH_THROWS_MATCHES(macroName, exceptionType,                \
+                                      resultDisposition, matcher, ...)         \
+    do {                                                                       \
+        Catch::AssertionHandler catchAssertionHandler(                         \
+            macroName##_catch_sr, CATCH_INTERNAL_LINEINFO,                     \
+            CATCH_INTERNAL_STRINGIFY(                                          \
+                __VA_ARGS__) ","                                               \
+                             " " CATCH_INTERNAL_STRINGIFY(                     \
+                                 exceptionType) ","                            \
+                                                " " CATCH_INTERNAL_STRINGIFY(  \
+                                                    matcher),                  \
+            resultDisposition);                                                \
+        if (catchAssertionHandler.allowThrows())                               \
+            try {                                                              \
+                static_cast<void>(__VA_ARGS__);                                \
+                catchAssertionHandler.handleUnexpectedExceptionNotThrown();    \
+            } catch (exceptionType const &ex) {                                \
+                catchAssertionHandler.handleExpr(                              \
+                    Catch::makeMatchExpr(ex, matcher));                        \
+            } catch (...) {                                                    \
+                catchAssertionHandler.handleUnexpectedInflightException();     \
+            }                                                                  \
+        else                                                                   \
+            catchAssertionHandler.handleThrowingCallSkipped();                 \
+        INTERNAL_CATCH_REACT(catchAssertionHandler)                            \
     } while (false)
 
 #endif // CATCH_MATCHERS_IMPL_HPP_INCLUDED
