@@ -1,9 +1,9 @@
 #ifndef TEST_SUPPORT_HEADER_FILE_HPP
 #define TEST_SUPPORT_HEADER_FILE_HPP
 
+#include <functional>
 #include <iostream>
 #include <sstream>
-#include <functional>
 
 class AutoRestoreRdbuf {
     std::ostream &out;
