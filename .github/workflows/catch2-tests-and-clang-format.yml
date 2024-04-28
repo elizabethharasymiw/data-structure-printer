@@ -16,7 +16,7 @@ jobs:
     - name: Install brew
       run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
     - name: Install clang-format
-      run: sudo brew install clang-format
+      run: brew install clang-format
     - name: Check all hpp file formatting
       run: clang-format --dry-run -Werror -style=file ./include/*.hpp
     - name: Check all cpp file formatting
