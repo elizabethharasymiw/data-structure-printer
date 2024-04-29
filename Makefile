@@ -8,6 +8,9 @@ phony_target: my_program tests
 run: phony_target
 	./my_program
 
+test:
+	./tests
+
 my_program: $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o
 	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o -o my_program
 
