@@ -11,6 +11,15 @@ run: phony_target
 test:
 	./tests
 
+# Warning: This can take while
+format:
+	clang-format -i --style=file $(INCLUDE_DIR)/*.hpp
+	clang-format -i --style=file $(SRC_DIR)/*.cpp
+
+test-format:
+	clang-format --dry-run -Werror -style=file ./include/*.hpp
+	clang-format --dry-run -Werror -style=file ./src/*.cpp
+
 my_program: $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o
 	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o -o my_program
 
