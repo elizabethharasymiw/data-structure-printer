@@ -1,0 +1,25 @@
+name: catch2 tests CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  tests:
+
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install brew
+      run: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    - name: Install clang-format
+      run: brew install clang-format
+    - name: Check all hpp and cpp file formatting
+      run: make format
+    - name: Build Project and Tests
+      run: make
+    - name: Run Tests
+      run: make test
