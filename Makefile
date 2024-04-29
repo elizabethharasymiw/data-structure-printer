@@ -43,3 +43,5 @@ list.o: $(SRC_DIR)/list.cpp $(INCLUDE_DIR)/list.hpp
 
 clean:
 	rm $(SRC_DIR)/*.o my_program tests
+
+#Test CI
