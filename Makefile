@@ -3,12 +3,12 @@ CXXFLAGS    := -Wall -Werror -std=c++14 -I include
 SRC_DIR     := src
 INCLUDE_DIR := include
 
-phony_target: my_program tests
+target: my_program tests
 
-run: phony_target
+run: target
 	./my_program
 
-test:
+test: target
 	./tests
 
 # Warning: This can take while
