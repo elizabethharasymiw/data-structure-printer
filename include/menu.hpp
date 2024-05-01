@@ -6,7 +6,7 @@
 
 class Menu{
 private:
-    vector<string> options;
+    std::vector<std::string> options;
 public:
     Menu(){};
     ~Menu(){};
