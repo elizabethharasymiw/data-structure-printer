@@ -20,8 +20,8 @@ test-format:
 	clang-format --dry-run -Werror -style=file ./include/*.hpp
 	clang-format --dry-run -Werror -style=file ./src/*.cpp
 
-my_program: $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o
-	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o -o my_program
+my_program: $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o $(SRC_DIR)/menu.o
+	$(CXX) $(CXXFLAGS) $(SRC_DIR)/main.o $(SRC_DIR)/tree.o $(SRC_DIR)/list.o $(SRC_DIR)/menu.o -o my_program
 
 tests: $(SRC_DIR)/all_tests.o $(SRC_DIR)/catch_amalgamated.o $(SRC_DIR)/list.o $(SRC_DIR)/tree.o $(SRC_DIR)/test_support.o
 	$(CXX) $(CXXFLAGS) $(SRC_DIR)/all_tests.o $(SRC_DIR)/catch_amalgamated.o $(SRC_DIR)/list.o $(SRC_DIR)/tree.o $(SRC_DIR)/test_support.o -o tests
@@ -40,6 +40,9 @@ tree.o: $(SRC_DIR)/tree.cpp $(INCLUDE_DIR)/tree.hpp
 
 list.o: $(SRC_DIR)/list.cpp $(INCLUDE_DIR)/list.hpp
 	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/list.cpp
+
+menu.o: $(SRC_DIR)/menu.cpp $(INCLUDE_DIR)/menu.hpp
+	$(CXX) $(CXXFLAGS) -c $(SRC_DIR)/menu.cpp
 
 clean:
 	rm $(SRC_DIR)/*.o my_program tests

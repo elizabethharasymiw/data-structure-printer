@@ -2,6 +2,7 @@
 
 #include "list.hpp"
 #include "tree.hpp"
+#include "menu.hpp"
 
 enum mainMenu { MENU, TREE, LIST, EXIT, COUNT };
 
