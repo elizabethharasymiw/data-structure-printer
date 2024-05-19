@@ -10,6 +10,7 @@ private:
 public:
     Menu(){};
     ~Menu(){};
+    void print();
 };
 
 #endif // MENU_HEADER_FILE_HPP
