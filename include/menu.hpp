@@ -8,7 +8,7 @@ class Menu{
 private:
     std::vector<std::string> options;
 public:
-    Menu(){};
+    Menu();
     ~Menu(){};
     void print();
 };
