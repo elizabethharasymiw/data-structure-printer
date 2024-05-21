@@ -1,12 +1,12 @@
 #include "menu.hpp"
 #include <iostream>
 
-Menu::Menu(){
+ListMenu::ListMenu(){
     options.push_back("Print Current Options");
     options.push_back("Exit");
 }
 
-void Menu::print(){
+void ListMenu::print(){
     for(int i = 0; i < options.size(); i++){
         std::cout << i << ": " << options[i] << std::endl;
     }
