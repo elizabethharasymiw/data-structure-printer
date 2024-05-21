@@ -11,3 +11,7 @@ void ListMenu::print(){
         std::cout << i << ": " << options[i] << std::endl;
     }
 }
+
+void ListMenu::menuLoop(){
+    std::cout << "Entered MenuLoop" << std::endl;
+};

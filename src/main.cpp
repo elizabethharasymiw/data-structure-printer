@@ -32,6 +32,8 @@ int checkUserInput(std::string userInput) {
 
 int main(int argc, char *argv[]) {
 
+    ListMenu myListMenu{};
+
     int currentState = MENU;
 
     std::string userInput;
@@ -55,6 +57,7 @@ int main(int argc, char *argv[]) {
             break;
         case mainMenu::LIST:
             std::cout << "Entered List Menu" << std::endl;
+            myListMenu.menuLoop();
             std::cout << "Returned to Main Menu" << std::endl;
             break;
         case mainMenu::EXIT:
