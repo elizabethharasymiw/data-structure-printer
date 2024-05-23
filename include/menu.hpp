@@ -24,4 +24,14 @@ public:
     void menuLoop() override;
 };
 
+class TreeMenu : public Menu{
+private:
+    std::vector<std::string> options;
+public:
+    TreeMenu();
+    ~TreeMenu() override {};
+    void print() override;
+    void menuLoop() override;
+};
+
 #endif // MENU_HEADER_FILE_HPP

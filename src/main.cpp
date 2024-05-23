@@ -33,6 +33,7 @@ int checkUserInput(std::string userInput) {
 int main(int argc, char *argv[]) {
 
     ListMenu myListMenu{};
+    TreeMenu myTreeMenu{};
 
     int currentState = MENU;
 
@@ -53,6 +54,7 @@ int main(int argc, char *argv[]) {
             break;
         case mainMenu::TREE:
             std::cout << "Entered Tree Menu" << std::endl;
+            myTreeMenu.menuLoop();
             std::cout << "Returned to Main Menu" << std::endl;
             break;
         case mainMenu::LIST:
