@@ -54,12 +54,12 @@ int main(int argc, char *argv[]) {
             break;
         case mainMenu::TREE:
             std::cout << "Entered Tree Menu" << std::endl;
-            myTreeMenu.menuLoop();
+            myTreeMenu.menuLoop(0);
             std::cout << "Returned to Main Menu" << std::endl;
             break;
         case mainMenu::LIST:
             std::cout << "Entered List Menu" << std::endl;
-            myListMenu.menuLoop();
+            myListMenu.menuLoop(0);
             std::cout << "Returned to Main Menu" << std::endl;
             break;
         case mainMenu::EXIT:

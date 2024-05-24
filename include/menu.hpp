@@ -11,7 +11,7 @@ public:
     Menu(){};
     virtual ~Menu(){};
     virtual void print(){};
-    virtual void menuLoop(){};
+    virtual void menuLoop(int num){};
 };
 
 class ListMenu : public Menu{
@@ -21,7 +21,7 @@ public:
     ListMenu();
     ~ListMenu() override {};
     void print() override;
-    void menuLoop() override;
+    void menuLoop(int num) override;
 };
 
 class TreeMenu : public Menu{
@@ -31,7 +31,7 @@ public:
     TreeMenu();
     ~TreeMenu() override {};
     void print() override;
-    void menuLoop() override;
+    void menuLoop(int num) override;
 };
 
 #endif // MENU_HEADER_FILE_HPP

@@ -12,8 +12,9 @@ void ListMenu::print(){
     }
 }
 
-void ListMenu::menuLoop(){
-    std::cout << "Entered MenuLoop" << std::endl;
+void ListMenu::menuLoop(int num){
+    ListMenu::print();
+    std::cout << "Entered List MenuLoop" << std::endl;
 }
 
 TreeMenu::TreeMenu(){
@@ -27,6 +28,7 @@ void TreeMenu::print(){
     }
 }
 
-void TreeMenu::menuLoop(){
-    std::cout << "Entered MenuLoop" << std::endl;
+void TreeMenu::menuLoop(int num){
+    TreeMenu::print();
+    std::cout << "Entered Tree MenuLoop" << std::endl;
 }
