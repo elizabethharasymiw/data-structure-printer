@@ -15,6 +15,14 @@ void ListMenu::print(){
 void ListMenu::menuLoop(int num){
     ListMenu::print();
     std::cout << "Entered List MenuLoop" << std::endl;
+
+    while(num != 1){
+        if(num == 0){
+            ListMenu::print();
+        }
+        std::cin >> num;
+    }
+
 }
 
 TreeMenu::TreeMenu(){
