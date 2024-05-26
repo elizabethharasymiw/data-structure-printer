@@ -4,6 +4,8 @@
 #include <string>
 #include <vector>
 
+int getUserInput();
+
 class Menu{
 private:
     std::vector<std::string> options;

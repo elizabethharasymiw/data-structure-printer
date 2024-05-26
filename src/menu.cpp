@@ -1,5 +1,24 @@
 #include "menu.hpp"
+#include <limits>
 #include <iostream>
+
+int getIntFromUser(){
+    int userInput;
+
+    std::cout << "Please enter a menu option number:";
+    std::cin >> userInput;
+
+    while(std::cin.fail()){
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+        std::cin >> userInput;
+    }
+
+    std::cin.clear();
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(),'\n');
+
+    return userInput;
+}
 
 ListMenu::ListMenu(){
     options.push_back("Print Current Options");
@@ -16,13 +35,16 @@ void ListMenu::menuLoop(int num){
     ListMenu::print();
     std::cout << "Entered List MenuLoop" << std::endl;
 
-    while(num != 1){
+    int userInput;
+
+    userInput = getIntFromUser();
+
+    while(userInput != 1){
         if(num == 0){
             ListMenu::print();
         }
-        std::cin >> num;
+        userInput = getIntFromUser();
     }
-
 }
 
 TreeMenu::TreeMenu(){
