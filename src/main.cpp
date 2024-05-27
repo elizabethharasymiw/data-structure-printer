@@ -4,15 +4,15 @@
 #include "tree.hpp"
 #include "menu.hpp"
 
-enum mainMenu { MENU, TREE, LIST, EXIT, COUNT };
+enum mainMenu { EXIT, MENU, TREE, LIST, COUNT };
 
 // Print all the current options of the program
 void printMenu() {
     std::cout << "Your current options are: \n";
-    std::cout << "0: Print current menu options\n";
-    std::cout << "1: Tree\n";
-    std::cout << "2: List\n";
-    std::cout << "3: Exit" << std::endl;
+    std::cout << "0: Exit" << std::endl;
+    std::cout << "1: Print current menu options\n";
+    std::cout << "2: Tree\n";
+    std::cout << "3: List" << std::endl;
 }
 
 // TODO: Will be needed for Tree Menu later
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
     std::string userInput;
 
     std::cout << "Welcome to Data Structure Printer\n";
-    std::cout << "For help type: 0" << std::endl;
+    std::cout << "For help type: 1" << std::endl;
 
     while (currentState != EXIT) {
 

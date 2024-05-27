@@ -21,8 +21,8 @@ int getIntFromUser(){
 }
 
 ListMenu::ListMenu(){
-    options.push_back("Print Current Options");
     options.push_back("Exit");
+    options.push_back("Print Current Options");
 }
 
 void ListMenu::print(){
@@ -39,8 +39,8 @@ void ListMenu::menuLoop(int num){
 
     userInput = getIntFromUser();
 
-    while(userInput != 1){
-        if(num == 0){
+    while(userInput != 0){
+        if(num == 1){
             ListMenu::print();
         }
         userInput = getIntFromUser();
