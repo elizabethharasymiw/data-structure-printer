@@ -22,7 +22,7 @@ int getIntFromUser(){
 
 ListMenu::ListMenu(){
     options.push_back("Exit");
-    options.push_back("Print Current Options");
+    options.push_back("???");
 }
 
 void ListMenu::print(){
@@ -32,24 +32,26 @@ void ListMenu::print(){
 }
 
 void ListMenu::menuLoop(int num){
+    std::cout << std::endl;
     ListMenu::print();
-    std::cout << "Entered List MenuLoop" << std::endl;
+    std::cout << std::endl;
 
     int userInput;
 
     userInput = getIntFromUser();
 
     while(userInput != 0){
-        if(num == 1){
-            ListMenu::print();
-        }
+        std::cout << std::endl;
+        ListMenu::print();
+        std::cout << std::endl;
+
         userInput = getIntFromUser();
     }
 }
 
 TreeMenu::TreeMenu(){
-    options.push_back("Print Current Options");
     options.push_back("Exit");
+    options.push_back("???");
 }
 
 void TreeMenu::print(){
@@ -59,6 +61,7 @@ void TreeMenu::print(){
 }
 
 void TreeMenu::menuLoop(int num){
+    std::cout << std::endl;
     TreeMenu::print();
-    std::cout << "Entered Tree MenuLoop" << std::endl;
+    std::cout << std::endl;
 }
