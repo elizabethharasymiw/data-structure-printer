@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
     std::string userInput;
 
-    std::cout << std::endl;
+    clearScreen();
     std::cout << "Welcome to Data Structure Printer\n";
     std::cout << std::endl;
 

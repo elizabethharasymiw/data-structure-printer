@@ -20,6 +20,10 @@ int getIntFromUser(){
     return userInput;
 }
 
+void clearScreen(){
+    std::cout << "\033[H\033[2J" << std::endl;
+}
+
 ListMenu::ListMenu(){
     options.push_back("Exit");
     options.push_back("???");

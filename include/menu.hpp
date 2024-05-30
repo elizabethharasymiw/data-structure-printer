@@ -5,6 +5,7 @@
 #include <vector>
 
 int getUserInput();
+void clearScreen();
 
 class Menu{
 private:
