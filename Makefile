@@ -1,4 +1,4 @@
-CXX         := clang++
+CXX         := g++
 CXXFLAGS    := -Wall -Werror -std=c++14 -I include
 SRC_DIR     := src
 INCLUDE_DIR := include
