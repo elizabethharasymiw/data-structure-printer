@@ -4,6 +4,7 @@
 - [] Finish Tree Menu
 - [] Create Array Menu
 - [] Make function for printing array to stdout
+- [] Add Conan to project to speed up build (catch2 build time)
 
 # Unplanned feature and TODO items
 * Create Heap class
